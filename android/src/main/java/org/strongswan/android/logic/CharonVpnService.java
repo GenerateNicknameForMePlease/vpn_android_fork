@@ -258,7 +258,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
                         mIsDisconnecting = false;
 
                         SimpleFetcher.enable();
-//                        addNotification();
+                        addNotification();
                         mBuilderAdapter.setProfile(mCurrentProfile);
                         if (initializeCharon(mBuilderAdapter, mLogFile, mAppDir, mCurrentProfile.getVpnType().has(VpnTypeFeature.BYOD))) {
                             Log.i(TAG, "charon started");
@@ -321,7 +321,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
                 Log.i(TAG, "charon stopped");
                 mCurrentProfile = null;
                 if (mNextProfile == null) {    /* only do this if we are not connecting to another profile */
-//                    removeNotification();
+                    removeNotification();
                     mBuilderAdapter.closeBlocking();
                 }
             }
@@ -384,7 +384,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
         boolean add_action = false;
 
         if (profile != null) {
-            name = profile.getName();
+            name = "VPN";
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
 //                .setSmallIcon(R.drawable.ic_notification)
