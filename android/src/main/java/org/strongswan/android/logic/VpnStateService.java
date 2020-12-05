@@ -269,17 +269,6 @@ public class VpnStateService extends Service {
      * @param fromScratch true if this is a manual retry/reconnect or a completely new connection
      */
     public void connect(Bundle profileInfo, boolean fromScratch, @Nullable Activity activity, String alias) {
-
-        if (activity != null) {
-            KeyChainAliasCallback keyChainAliasCallback = new KeyChainAliasCallback() {
-                @Override
-                public void alias(@Nullable String s) {
-                    Log.d(TAG, "selected alias = " + s);
-                }
-            };
-            KeyChain.choosePrivateKeyAlias(activity, keyChainAliasCallback, null, null, null, -1, alias);
-
-        }
         /* we assume we have the necessary permission */
         Context context = getApplicationContext();
         Intent intent = new Intent(context, CharonVpnService.class);
